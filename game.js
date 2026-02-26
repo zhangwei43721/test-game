@@ -47,6 +47,8 @@ class TetrisGame {
         this.dropInterval = 1000;
         this.lastDrop = 0;
 
+        this.pauseBtn = document.getElementById('pauseBtn');
+
         this.init();
     }
 
@@ -58,6 +60,7 @@ class TetrisGame {
         document.addEventListener('keydown', (e) => this.handleKeyPress(e));
         document.getElementById('startBtn').addEventListener('click', () => this.startGame());
         document.getElementById('restartBtn').addEventListener('click', () => this.startGame());
+        this.pauseBtn?.addEventListener('click', () => this.togglePause());
 
         // 显示最高分
         document.getElementById('highScore').textContent = this.highScore;
@@ -88,6 +91,8 @@ class TetrisGame {
         this.nextPiece = this.randomPiece();
 
         document.getElementById('startBtn').textContent = '重新开始';
+        this.pauseBtn.disabled = false;
+        this.pauseBtn.textContent = '暂停游戏';
 
         this.lastDrop = performance.now();
         requestAnimationFrame((time) => this.gameLoop(time));
@@ -421,12 +426,16 @@ class TetrisGame {
     }
 
     togglePause() {
+        if (!this.gameRunning) return;
+
         this.gamePaused = !this.gamePaused;
         if (this.gamePaused) {
             this.showModal('pauseModal');
+            this.pauseBtn.textContent = '继续游戏';
         } else {
             this.hideModal('pauseModal');
             this.lastDrop = performance.now();
+            this.pauseBtn.textContent = '暂停游戏';
         }
     }
 
@@ -440,6 +449,7 @@ class TetrisGame {
 
     gameOver() {
         this.gameRunning = false;
+        this.pauseBtn.disabled = true;
 
         if (this.score > this.highScore) {
             this.highScore = this.score;

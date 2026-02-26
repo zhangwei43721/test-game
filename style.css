@@ -137,6 +137,35 @@ body {
     transform: translateY(0);
 }
 
+#pauseBtn {
+    background: linear-gradient(90deg, #ff9a9e, #fecfef);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    text-transform: uppercase;
+    grid-column: span 2;
+    box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+}
+
+#pauseBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 154, 158, 0.6);
+}
+
+#pauseBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#pauseBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .modal {
     display: none;
     position: fixed;

@@ -12,16 +12,18 @@ body {
     justify-content: center;
     align-items: center;
     color: #fff;
+    padding: 10px;
 }
 
 .game-container {
     text-align: center;
-    padding: 20px;
+    width: 100%;
+    max-width: 900px;
 }
 
 .game-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     background: linear-gradient(90deg, #e94560, #0f3460);
     -webkit-background-clip: text;
@@ -31,16 +33,17 @@ body {
 
 .game-wrapper {
     display: flex;
-    gap: 30px;
+    gap: 15px;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .game-board {
-    border: 4px solid #e94560;
-    border-radius: 10px;
+    border: 3px solid #e94560;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
 }
 
 #gameCanvas {
@@ -49,53 +52,60 @@ body {
 }
 
 .game-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    min-width: 200px;
 }
 
 .info-box {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 15px;
-    min-width: 150px;
+    border-radius: 8px;
+    padding: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .info-box h3 {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: #e94560;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .info-box p {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
 #nextCanvas {
     background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 100%);
     border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+
+.info-box:has(#nextCanvas) {
+    grid-column: span 2;
 }
 
 .controls {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    grid-column: span 2;
 }
 
 .controls h3 {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: #e94560;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .controls p {
-    font-size: 0.9rem;
-    margin: 5px 0;
+    font-size: 0.8rem;
+    margin: 3px 0;
     color: #ccc;
 }
 
@@ -103,13 +113,14 @@ body {
     background: linear-gradient(90deg, #e94560, #0f3460);
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     font-weight: bold;
     text-transform: uppercase;
+    grid-column: span 2;
 }
 
 #startBtn:hover {
@@ -140,21 +151,21 @@ body {
 
 .modal-content {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    padding: 40px;
-    border-radius: 20px;
+    padding: 30px;
+    border-radius: 15px;
     text-align: center;
     border: 3px solid #e94560;
     box-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
 }
 
 .modal-content h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #e94560;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .modal-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 20px;
 }
 
@@ -162,9 +173,9 @@ body {
     background: linear-gradient(90deg, #e94560, #0f3460);
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     font-weight: bold;
@@ -175,33 +186,84 @@ body {
     box-shadow: 0 5px 20px rgba(233, 69, 96, 0.5);
 }
 
-@media (max-width: 768px) {
+/* 大屏幕优化 */
+@media (min-width: 900px) {
     .game-wrapper {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: nowrap;
     }
 
     .game-info {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        min-width: 180px;
     }
 
-    .info-box {
-        min-width: 100px;
-        padding: 10px;
+    .info-box:has(#nextCanvas) {
+        grid-column: span 2;
+    }
+}
+
+/* 中等屏幕 */
+@media (max-width: 768px) {
+    .game-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-board {
+        border-width: 2px;
     }
 
     .info-box p {
         font-size: 1.2rem;
     }
 
-    #nextCanvas {
-        width: 80px;
-        height: 80px;
-    }
-
     .controls {
         display: none;
+    }
+}
+
+/* 小屏幕 */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .game-container h1 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .game-wrapper {
+        gap: 8px;
+    }
+
+    .game-info {
+        grid-template-columns: repeat(3, 1fr);
+        min-width: 100%;
+    }
+
+    .info-box {
+        padding: 8px;
+    }
+
+    .info-box h3 {
+        font-size: 0.7rem;
+    }
+
+    .info-box p {
+        font-size: 1rem;
+    }
+
+    .info-box:has(#nextCanvas) {
+        grid-column: span 3;
+    }
+
+    .controls,
+    #startBtn {
+        grid-column: span 3;
+    }
+
+    #startBtn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }

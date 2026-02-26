@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -22,13 +22,15 @@ body {
 }
 
 .game-container h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(90deg, #e94560, #0f3460);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    background: linear-gradient(90deg, #ffffff, #e0e7ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: 3px;
 }
 
 .game-wrapper {
@@ -40,15 +42,15 @@ body {
 }
 
 .game-board {
-    border: 3px solid #e94560;
+    border: 3px solid #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 #gameCanvas {
     display: block;
-    background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 100%);
+    background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
 }
 
 .game-info {
@@ -59,17 +61,18 @@ body {
 }
 
 .info-box {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     padding: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .info-box h3 {
     font-size: 0.85rem;
-    color: #e94560;
+    color: #ffffff;
     margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .info-box p {
@@ -78,7 +81,7 @@ body {
 }
 
 #nextCanvas {
-    background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 100%);
+    background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
     border-radius: 5px;
     width: 100%;
     height: auto;
@@ -89,18 +92,19 @@ body {
 }
 
 .controls {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     padding: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     grid-column: span 2;
 }
 
 .controls h3 {
     font-size: 0.85rem;
-    color: #e94560;
+    color: #ffffff;
     margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .controls p {
@@ -110,7 +114,7 @@ body {
 }
 
 #startBtn {
-    background: linear-gradient(90deg, #e94560, #0f3460);
+    background: linear-gradient(90deg, #667eea, #764ba2);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -121,11 +125,12 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     grid-column: span 2;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 #startBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(233, 69, 96, 0.5);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
 }
 
 #startBtn:active {
@@ -150,18 +155,19 @@ body {
 }
 
 .modal-content {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
-    border: 3px solid #e94560;
-    box-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 .modal-content h2 {
     font-size: 1.8rem;
-    color: #e94560;
+    color: #ffffff;
     margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content p {
@@ -170,7 +176,7 @@ body {
 }
 
 .modal-content button {
-    background: linear-gradient(90deg, #e94560, #0f3460);
+    background: linear-gradient(90deg, #667eea, #764ba2);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -179,11 +185,12 @@ body {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     font-weight: bold;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .modal-content button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(233, 69, 96, 0.5);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
 }
 
 /* 大屏幕优化 */
